@@ -109,7 +109,22 @@ var jdolar=(function(){
 	      	if (typeof el.get != 'undefined') return el;
 	        for (var name in opt) el[name] = opt[name];
 	        return el;
-	    }
+	    },
+		css: function() {
+			if(arguments.length == 0){
+				return this.style;
+			}else if (arguments.length == 1){
+				var a = arguments[0];
+				if (typeof a == 'string')
+					return this.style[a];
+				else {for (var p in a) 
+					this.style[p] = a[p];
+			}else {
+				for(var i = 0, l = arguments.length;i<l;)
+					this.style[arguments[i++]] = arguments[i++]
+			}
+			return this;
+		}
 	}
 	
 	return methods;
