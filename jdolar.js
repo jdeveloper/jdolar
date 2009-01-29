@@ -117,8 +117,10 @@ var jdolar=(function(){
 				var a = arguments[0];
 				if (typeof a == 'string')
 					return this.style[a];
-				else {for (var p in a) 
-					this.style[p] = a[p];
+				else {
+					for (var p in a) 
+						this.style[p] = a[p];
+				}
 			}else {
 				for(var i = 0, l = arguments.length;i<l;)
 					this.style[arguments[i++]] = arguments[i++]
