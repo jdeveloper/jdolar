@@ -89,8 +89,14 @@ var selector = {
 var jdolar=(function(){
 	var methods = {
 		find: function(selExpr,context,cache){
-			return selector.get(selExpr,context,cache);
-		}
+			return this.extend(selector.get(selExpr,context,cache));
+		},
+		extend: function(el, opt){
+	        var opt = opt || methods;
+	      	if (typeof el.get != 'undefined') return el;
+	        for (var name in opt) el[name] = opt[name];
+	        return el;
+	    }
 	}
 	
 	return methods;
