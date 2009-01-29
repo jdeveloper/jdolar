@@ -1,3 +1,16 @@
+Array.prototype.each = function(fun){
+  if (typeof fun != "function") throw new TypeError();
+  for (var i = 0; i < this.length; i++) {
+    if (i in this) fun.call(arguments[1], this[i], i)
+  }
+  return this;
+ };
+
+Array.prototype.map = function(fun){
+	var res = Array();
+	this.each(function(el){res.push(fun(el));});
+	return res;
+}
 //code taken form http://www.anieto2k.com/2009/01/14/selectores-css-y-frameworks-actuales/
 var selector = {
 	cache: {},
@@ -89,7 +102,7 @@ var selector = {
 var jdolar=(function(){
 	var methods = {
 		find: function(selExpr,context,cache){
-			return this.extend(selector.get(selExpr,context,cache));
+			return selector.get(selExpr,context,cache).map(this.extend);
 		},
 		extend: function(el, opt){
 	        var opt = opt || methods;
