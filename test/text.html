@@ -1,0 +1,22 @@
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>test page</title>
+	<script src="../jdolar.js"></script>
+</head>
+<body>
+	<div>
+		<div>
+			<p>Bla</p>
+		</div>
+	</div>
+	<div>
+		<p>Bla</p>
+	</div>
+	
+	<div id="result">result</div>
+	<script>
+	jdolar.find('#result').innerHTML = jdolar.find('div p').length;
+	</script>	
+</body>
+</html>
