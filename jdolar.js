@@ -126,6 +126,17 @@ var jdolar=(function(){
 					this.style[arguments[i++]] = arguments[i++]
 			}
 			return this;
+		},
+		parent: function(){
+		    if (!this.parentNode) return this;
+		    if (arguments.length == 0) {
+		        return this.extend(this.parentNode);
+		    } else {
+		    	if (this.parentNode.tagName.toUpperCase() == (arguments[0]).toUpperCase())
+		        	return this.extend(this.parentNode);
+		    	else 
+		        	return this.extend(this.parentNode).parent(arguments[0]); 
+		    }
 		}
 	}
 	
