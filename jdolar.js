@@ -137,6 +137,37 @@ var jdolar=(function(){
 		    	else 
 		        	return this.extend(this.parentNode).parent(arguments[0]); 
 		    }
+		},
+		addClass: function(cl){
+		     if (!this.getAttribute) return false;
+		     if(this.hasClass(cl)) return this;
+		     var classes = this.getAttribute('class');
+		     if(classes==null) this.setAttribute('class',cl);
+		     else this.setAttribute('class',classes+" "+cl);
+		     return this;
+		},
+		removeClass: function(cl){
+			if (!this.getAttribute) return false;
+			var classes = this.getAttribute('class');
+			if(classes==null) return this;
+			var arrClasses=classes.split(" ");
+			for(var i=0;i<arrClasses.length;i++){
+			 if(arrClasses[i]==cl){
+			   arrClasses.splice(i,1);
+			   break;
+			 }
+			}
+			this.setAttribute('class',arrClasses.join(" "));
+			return this;
+		},
+		hasClass: function(cl){
+		   if (!this.getAttribute) return false;
+		   var classes=this.getAttribute('class');
+		   if(classes==null) return false;
+		   var arrClasses=classes.split(" ");
+		   for(var i=0;i<arrClasses.length;i++)
+		      if(arrClasses[i]==cl) return true;
+		   return false;
 		}
 	}
 	
